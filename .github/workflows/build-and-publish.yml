@@ -109,6 +109,10 @@ jobs:
           name: macos-latest.zip
           path: ${{ github.workspace }}
 
+      - name: Debug
+        shell: bash
+        run: ls -la;
+
       - name: Extract Artifacts
         shell: pwsh
         working-directory: ${{ github.workspace }}
