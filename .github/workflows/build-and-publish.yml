@@ -94,12 +94,11 @@ jobs:
       - uses: actions/download-artifact@v2.1.1
 
       - name: Extract Artifacts
-        shell: bash
+        shell: pwsh
         run: 
-          ls -la;
-          unzip ./ubuntu-latest.zip -d ubuntu-latest;
-          unzip ./macos-latest.zip -d macos-latest;
-          unzip ./windows-latest.zip -d windows-latest;
+          Expand-Archive -Path windows-latest.zip -DestinationPath windows-latest;
+          Expand-Archive -Path ubuntu-latest.zip -DestinationPath ubuntu-latest;
+          Expand-Archive -Path macos-latest.zip -DestinationPath macos-latest;
 
       - name: Setup Runtimes Folder
         shell: bash
