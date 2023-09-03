@@ -94,9 +94,9 @@ jobs:
           mkdir -p ./runtimes/osx/native;
           mkdir -p ./runtimes/linux/native;
           mkdir -p ./runtimes/windows/native;
-          cp ./macos-latest/* ./runtimes/osx/native;
-          cp ./ubuntu-latest/* ./runtimes/linux/native;
-          cp ./windows-latest/* ./runtimes/windows/native;
+          cp ./macos-latest/lib/* ./runtimes/osx/native;
+          cp ./ubuntu-latest/lib/* ./runtimes/linux/native;
+          cp ./windows-latest/lib/* ./runtimes/windows/native;
       
       - name: Build
         run: dotnet build --no-restore
