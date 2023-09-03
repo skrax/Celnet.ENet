@@ -95,19 +95,16 @@ jobs:
         uses: actions/download-artifact@v2.1.1
         with:
           name: windows-latest.zip
-          path: ${{ github.workspace }}
 
       - name: Download Linux Native
         uses: actions/download-artifact@v2.1.1
         with:
           name: ubuntu-latest.zip
-          path: ${{ github.workspace }}
 
       - name: Download MacOS Native
         uses: actions/download-artifact@v2.1.1
         with:
           name: macos-latest.zip
-          path: ${{ github.workspace }}
 
       - name: Debug
         shell: bash
@@ -115,9 +112,7 @@ jobs:
 
       - name: Extract Artifacts
         shell: pwsh
-        working-directory: ${{ github.workspace }}
         run: 
-          Get-ChildItem -Path ${{ github.workspace }};
           Expand-Archive -Path windows-latest.zip -DestinationPath windows-latest;
           Expand-Archive -Path ubuntu-latest.zip -DestinationPath ubuntu-latest;
           Expand-Archive -Path macos-latest.zip -DestinationPath macos-latest;
