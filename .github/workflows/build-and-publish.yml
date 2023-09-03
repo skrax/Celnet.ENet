@@ -109,7 +109,7 @@ jobs:
       - name: Extract Artifacts
         shell: pwsh
         run: 
-          Get-ChildItem -Path .
+          Get-ChildItem -Path .;
           Expand-Archive -Path windows-latest.zip -DestinationPath windows-latest;
           Expand-Archive -Path ubuntu-latest.zip -DestinationPath ubuntu-latest;
           Expand-Archive -Path macos-latest.zip -DestinationPath macos-latest;
