@@ -68,7 +68,7 @@ jobs:
     - name: Pack
       shell: pwsh
       working-directory: ${{ github.workspace }}/Native
-      run: Compress-Archive -Path install -DestinationPath build.zip
+      run: Compress-Archive -Path install/* -DestinationPath build.zip
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v3.1.2
@@ -93,22 +93,15 @@ jobs:
 
       - uses: actions/download-artifact@v2.1.1
 
-      - name: Extract Artifacts
-        shell: pwsh
-        run: 
-          Expand-Archive -Path windows-latest.zip/windows-latest.zip -DestinationPath windows-latest;
-          Expand-Archive -Path ubuntu-latest.zip -DestinationPath ubuntu-latest;
-          Expand-Archive -Path macos-latest.zip -DestinationPath macos-latest;
-
       - name: Setup Runtimes Folder
         shell: bash
         run:
           mkdir -p ./runtimes/osx/native;
           mkdir -p ./runtimes/linux/native;
           mkdir -p ./runtimes/windows/native;
-          cp ./macos-latest/lib/* ./runtimes/osx/native;
-          cp ./ubuntu-latest/lib/* ./runtimes/linux/native;
-          cp ./windows-latest/lib/* ./runtimes/windows/native;
+          cp ./macos-latest.zip/lib/* ./runtimes/osx/native;
+          cp ./ubuntu-latest.zip/lib/* ./runtimes/linux/native;
+          cp ./windows-latest.zip/lib/* ./runtimes/windows/native;
       
       - name: Build
         run: dotnet build --no-restore
