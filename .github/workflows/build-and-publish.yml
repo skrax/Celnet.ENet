@@ -63,13 +63,13 @@ jobs:
 
     - name: Install
       working-directory: ${{ github.workspace }}/Native
-      run: cmake --install build --strip --prefix install
+      run: cmake --install build --strip --prefix ${{ matrix.os }}
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v3.1.2
       with:
         name: ${{ matrix.os }}
-        path: ${{ github.workspace }}/Native/install
+        path: ${{ github.workspace }}/Native/${{ matrix.os }}
 
   build-managed:
     runs-on: ubuntu-latest
@@ -94,9 +94,9 @@ jobs:
           mkdir -p ./runtimes/osx/native;
           mkdir -p ./runtimes/linux/native;
           mkdir -p ./runtimes/windows/native;
-          cp ./macos-latest/lib/* ./runtimes/osx/native;
-          cp ./ubuntu-latest/lib/* ./runtimes/linux/native;
-          cp ./windows-latest/lib/* ./runtimes/windows/native;
+          cp ./macos-latest/* ./runtimes/osx/native;
+          cp ./ubuntu-latest/* ./runtimes/linux/native;
+          cp ./windows-latest/* ./runtimes/windows/native;
       
       - name: Build
         run: dotnet build --no-restore
@@ -108,4 +108,4 @@ jobs:
         uses: actions/upload-artifact@v3.1.2
         with:
           name: Celnet.ENet.nupkg
-          path: ${{ github.workspace }}/Release/*nupkg
+          path: ${{ github.workspace }}/bin/Release/*nupkg
