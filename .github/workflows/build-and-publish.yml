@@ -97,9 +97,9 @@ jobs:
         shell: bash
         run: 
           ls -la;
-          unzip windows-latest.zip -d windows-latest;
-          unzip ubuntu-latest.zip -d ubuntu-latest;
-          unzip macos-latest.zip -d macos-latest;
+          unzip ./ubuntu-latest.zip -d ubuntu-latest;
+          unzip ./macos-latest.zip -d macos-latest;
+          unzip ./windows-latest.zip -d windows-latest;
 
       - name: Setup Runtimes Folder
         shell: bash
