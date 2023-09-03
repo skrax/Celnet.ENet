@@ -2,6 +2,24 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
+        <Title>Celnet.ENet</Title>
+        <Description>Reliable UDP Library for .NET</Description>
+        <Copyright>(c) 2023 Fabian Seidl</Copyright>
+        <PackageProjectUrl>https://github.com/skrax/Celnet.ENet</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/skrax/Celnet.ENet</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <TargetsForTfmSpecificContentInPackage>
+            $(TargetsForTfmSpecificContentInPackage);Native
+        </TargetsForTfmSpecificContentInPackage>
     </PropertyGroup>
+
+    <Target Name="Native">
+        <ItemGroup>
+            <TfmSpecificPackageFile Include="runtimes/**" SkipUnchangedFiles="true">
+                <PackagePath>runtimes</PackagePath>
+            </TfmSpecificPackageFile>
+        </ItemGroup>
+    </Target>
 
 </Project>
