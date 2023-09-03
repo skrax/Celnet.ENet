@@ -91,31 +91,16 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
 
-      - name: Download Windows Native
-        uses: actions/download-artifact@v2.1.1
-        with:
-          name: windows-latest.zip
-
-      - name: Download Linux Native
-        uses: actions/download-artifact@v2.1.1
-        with:
-          name: ubuntu-latest.zip
-
-      - name: Download MacOS Native
-        uses: actions/download-artifact@v2.1.1
-        with:
-          name: macos-latest.zip
-
-      - name: Debug
-        shell: bash
-        run: ls -la;
+      - uses: actions/download-artifact@v2.1.1
 
       - name: Extract Artifacts
-        shell: pwsh
+        shell: bash
         run: 
-          Expand-Archive -Path windows-latest.zip -DestinationPath windows-latest;
-          Expand-Archive -Path ubuntu-latest.zip -DestinationPath ubuntu-latest;
-          Expand-Archive -Path macos-latest.zip -DestinationPath macos-latest;
+          ls -la;
+          apt install unzip;
+          unzip windows-latest.zip -d windows-latest;
+          unzip ubuntu-latest.zip -d ubuntu-latest;
+          unzip macos-latest.zip -d macos-latest;
 
       - name: Setup Runtimes Folder
         shell: bash
