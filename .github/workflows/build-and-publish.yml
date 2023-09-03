@@ -96,6 +96,7 @@ jobs:
       - name: Extract Artifacts
         shell: bash
         run: 
+          ls -la;
           unzip windows-latest.zip -d windows-latest;
           unzip ubuntu-latest.zip -d ubuntu-latest;
           unzip macos-latest.zip -d macos-latest;
