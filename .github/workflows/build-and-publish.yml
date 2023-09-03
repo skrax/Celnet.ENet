@@ -109,3 +109,7 @@ jobs:
         with:
           name: Celnet.ENet.nupkg
           path: ${{ github.workspace }}/bin/Release/*nupkg
+
+      - name: Publish on Nuget
+        working-directory: bin/Release
+        run: dotnet nuget push $(find *.nupkg) -s https://api.nuget.org/v3/index.json -k ${{ secrets.NUGET_API_KEY }}
