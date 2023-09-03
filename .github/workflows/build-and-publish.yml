@@ -63,7 +63,7 @@ jobs:
 
     - name: Install
       working-directory: ${{ github.workspace }}/Native
-      run: cmake --install ${{ steps.strings.outputs.build-output-dir }} --strip --prefix install
+      run: cmake --install build --strip --prefix install
 
     - name: Pack
       shell: pwsh
