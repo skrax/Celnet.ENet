@@ -9,6 +9,7 @@
         <RepositoryUrl>https://github.com/skrax/Celnet.ENet</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
         <TargetsForTfmSpecificContentInPackage>
             $(TargetsForTfmSpecificContentInPackage);Native
         </TargetsForTfmSpecificContentInPackage>
